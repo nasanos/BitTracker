@@ -1,0 +1,7 @@
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.gtk-gui.gui.stetic
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/BitTracker.pdb
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/BitTracker.exe
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.exe
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.pdb
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/Newtonsoft.Json.dll

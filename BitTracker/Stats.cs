@@ -14,29 +14,32 @@ public class CoinStats
 	public float volume_30day { get; set; }
 }
 
-public class BlockHash
+public class Block
 {
+    public int height { get; set; }
 	public string hash { get; set; }
 	public int time { get; set; }
-	public int block_index { get; set; }
-	public int height { get; set; }
-	public int[] txIndexes { get; set; }
+}
+
+public class BlockList
+{
+    public Block[] blocks { get; set; }
 }
 
 class BitStats
 {
 	public static CoinStats GetCoinStats(string product)
 	{
-		string base_url = "https://api.gdax.com/";
+		string baseUrl = "https://api.gdax.com/";
 
-		HttpWebRequest stats_request = (HttpWebRequest) WebRequest.Create(base_url + "products/" + product + "/stats");
-		stats_request.Method = WebRequestMethods.Http.Get;
-		stats_request.ContentType = "application/json; charset=utf-8";
-		stats_request.UserAgent = "Test Blockchain Stats Application";
+		HttpWebRequest statsRequest = (HttpWebRequest) WebRequest.Create(baseUrl + "products/" + product + "/stats");
+		statsRequest.Method = WebRequestMethods.Http.Get;
+		statsRequest.ContentType = "application/json; charset=utf-8";
+		statsRequest.UserAgent = "Test Blockchain Stats Application";
 
-		HttpWebResponse stats_response = stats_request.GetResponse() as HttpWebResponse;
+		HttpWebResponse statsResponse = statsRequest.GetResponse() as HttpWebResponse;
 
-		using (Stream responseStream = stats_response.GetResponseStream())
+		using (Stream responseStream = statsResponse.GetResponseStream())
 		{
 			StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
 			CoinStats stats = JsonConvert.DeserializeObject<CoinStats>(reader.ReadToEnd());
@@ -45,21 +48,22 @@ class BitStats
 		}
 	}
 
-	public static BlockHash GetBlockStats()
+	public static BlockList GetBlockStats()
 	{
-		string base_url = "https://blockchain.info/latestblock";
+        string baseUrl = "https://blockchain.info/blocks/";
+        long milliTime = (long)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalMilliseconds;
 
-		HttpWebRequest block_request = (HttpWebRequest)WebRequest.Create(base_url);
-		block_request.Method = WebRequestMethods.Http.Get;
-		block_request.ContentType = "application/json; charset=utf-8";
-		block_request.UserAgent = "Test Blockchain Stats Application";
+        HttpWebRequest blockRequest = (HttpWebRequest)WebRequest.Create(baseUrl + milliTime + "?format=json");
+		blockRequest.Method = WebRequestMethods.Http.Get;
+		blockRequest.ContentType = "application/json; charset=utf-8";
+        blockRequest.UserAgent = "Test Blockchain Stats Application";
 
-		HttpWebResponse block_response = block_request.GetResponse() as HttpWebResponse;
+        HttpWebResponse blockResponse = blockRequest.GetResponse() as HttpWebResponse;
 
-		using (Stream responseStream = block_response.GetResponseStream())
+		using (Stream responseStream = blockResponse.GetResponseStream())
 		{
 			StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-			BlockHash blockHash = JsonConvert.DeserializeObject<BlockHash>(reader.ReadToEnd());
+			BlockList blockHash = JsonConvert.DeserializeObject<BlockList>(reader.ReadToEnd());
 
 			return blockHash;
 		}

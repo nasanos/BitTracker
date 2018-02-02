@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{2FCF84AA-369A-4024-9D0C-6C1D424B1BE3}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BitTracker/Program.cs">
+    <Files>
+      <File FileName="BitTracker/Program.cs" Line="45" Column="47" />
+      <File FileName="BitTracker/Stats.cs" Line="57" Column="52" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BitTracker PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

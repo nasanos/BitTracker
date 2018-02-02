@@ -1,0 +1,8 @@
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/BitTracker.exe
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/BitTracker.pdb
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/Newtonsoft.Json.dll
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/bin/Debug/Newtonsoft.Json.xml
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.csprojResolveAssemblyReference.cache
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.csproj.CoreCompileInputs.cache
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.exe
+/Users/dymensionos/Ops/CSharp/BitTracker/BitTracker/obj/x86/Debug/BitTracker.pdb
