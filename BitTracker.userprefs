@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{2FCF84AA-369A-4024-9D0C-6C1D424B1BE3}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="BitTracker/Program.cs">
     <Files>
-      <File FileName="BitTracker/Program.cs" Line="45" Column="47" />
-      <File FileName="BitTracker/Stats.cs" Line="57" Column="52" />
+      <File FileName="BitTracker/Program.cs" Line="46" Column="13" />
+      <File FileName="BitTracker/Stats.cs" Line="53" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />

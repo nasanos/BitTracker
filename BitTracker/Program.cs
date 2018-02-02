@@ -6,6 +6,8 @@ namespace BitTracker
 {
 	class MainClass
 	{
+        public static MainWindow win;
+
 		public static void Main(string[] args)
 		{
 			CoinStats coinStats = BitStats.GetCoinStats("BTC-USD");
@@ -13,9 +15,9 @@ namespace BitTracker
 
             // Configure window
 			Application.Init();
-			MainWindow win = new MainWindow();
+            win = new MainWindow();
 			win.Title = "BitTracker";
-			win.KeepAbove = true;
+			//win.KeepAbove = true;
 
 			HBox hbox1 = new HBox(false, 5);
 			HBox hbox2 = new HBox(false, 5);
@@ -36,9 +38,14 @@ namespace BitTracker
 			coinStatsFrame.Add(coinStatsLabel);
 			hbox1.PackStart(coinStatsFrame, false, false, 10);
 
+            // Persistence of toggle
+            ToggleButton persToggle = new ToggleButton("Keep on Top");
+            persToggle.Clicked += persToggleCallback;
+            hbox1.PackStart(persToggle, false, false, 10);
+
             // Display blocks
             string prevblockHash = blockHash.blocks[0].hash;
-            DateTime unixTimeBase = new DateTime(1970, 1, 1, 0, 0, 0);
+            DateTime unixTimeBase = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             Table blockStatsTable = new Table(3, 6, false);
             blockStatsTable.SetColSpacing(0, 15);
@@ -63,13 +70,16 @@ namespace BitTracker
             List<Label> blockTimeLabel = new List<Label>() { new Label(), new Label(), new Label(), new Label(), new Label() };
             for (int i = 0; i < 5; i++) {
                 blockHashLabel[i].Text = blockHash.blocks[i].hash;
+                blockHashLabel[i].SetAlignment(0, 1);
                 blockStatsTable.Attach(blockHashLabel[i], 0, 1, 1+(uint)i, 2+(uint)i);
 
                 blockHeightLabel[i].Text = blockHash.blocks[i].height.ToString();
+                blockHeightLabel[i].SetAlignment(0, 1);
                 blockStatsTable.Attach(blockHeightLabel[i], 1, 2, 1 + (uint)i, 2 + (uint)i);
 
-                DateTime blockHashTime = unixTimeBase.AddMilliseconds(blockHash.blocks[i].time);
-                blockTimeLabel[i].Text = blockHashTime.ToString("MM/dd/yy H:mm");
+                DateTime blockHashTime = unixTimeBase.AddSeconds(blockHash.blocks[i].time);
+                blockTimeLabel[i].Text = blockHashTime.ToString("MM/dd/yy H:mm UTC");
+                blockTimeLabel[i].SetAlignment(0, 1);
                 blockStatsTable.Attach(blockTimeLabel[i], 2, 3, 1 + (uint)i, 2 + (uint)i);
             }
 
@@ -93,8 +103,8 @@ namespace BitTracker
                     {
                         blockHashLabel[i].Text = blockHash.blocks[i].hash;
                         blockHeightLabel[i].Text = blockHash.blocks[i].height.ToString();
-                        DateTime blockHashTime = unixTimeBase.AddMilliseconds(blockHash.blocks[i].time);
-                        blockTimeLabel[i].Text = blockHashTime.ToString("MM/dd/yy H:mm");
+                        DateTime blockHashTime = unixTimeBase.AddSeconds(blockHash.blocks[i].time);
+                        blockTimeLabel[i].Text = blockHashTime.ToString("MM/dd/yy H:mm UTC");
                     }
 				}
 
@@ -104,5 +114,18 @@ namespace BitTracker
 			win.ShowAll();
 			Application.Run();
 		}
+
+        public static void persToggleCallback(object obj, EventArgs args)
+        {
+            if (((ToggleButton)obj).Active)
+            {
+                win.KeepAbove = true;
+            }
+            else
+            {
+                win.KeepAbove = false;
+            }
+        }
+            
 	}
 }

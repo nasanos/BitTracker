@@ -18,7 +18,7 @@ public class Block
 {
     public int height { get; set; }
 	public string hash { get; set; }
-	public int time { get; set; }
+	public long time { get; set; }
 }
 
 public class BlockList
